@@ -1,6 +1,6 @@
 #![no_std]
 #![no_main]
-#![feature(asm, naked_functions, panic_info_message)]
+#![feature(asm, global_asm, naked_functions, panic_info_message)]
 
 mod init;
 mod panic;
