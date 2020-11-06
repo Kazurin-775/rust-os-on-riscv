@@ -1,0 +1,25 @@
+OUTPUT_ARCH("riscv")
+ENTRY(_start)
+
+SECTIONS {
+    . = 0x80000000;
+    .text : {
+        *(.text.init) *(.text .text.*)
+    }
+    _global_pointer = .;
+    .rodata : {
+        *(.rodata .rodata.*)
+    }
+    .data : {
+        *(.sdata .sdata.*) *(.data .data.*)
+    }
+    .bss : {
+        _bss_start = .;
+        *(.sbss .sbss.*) *(.bss .bss.*)
+        . = ALIGN(8);
+        _bss_end = .;
+    }
+    _stack_start = .;
+    . += 0x80000;
+    _stack_end = .;
+}
