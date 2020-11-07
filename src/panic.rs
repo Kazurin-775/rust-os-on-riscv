@@ -5,9 +5,9 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
     print!("Kernel panic - aborting: ");
     if let Some(p) = info.location() {
         println!(
-            "line {}, file {}: {}",
-            p.line(),
+            "at {}:{}: {}",
             p.file(),
+            p.line(),
             info.message().unwrap()
         );
     } else {
