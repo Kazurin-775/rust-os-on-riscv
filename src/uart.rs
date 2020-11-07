@@ -32,18 +32,18 @@ macro_rules! print {
     ($($args:tt)+) => ({
         use core::fmt::Write;
         write!(crate::uart::UartConsole::new(), $($args)+).unwrap()
-	});
+    });
 }
 
 #[macro_export]
 macro_rules! println {
-	() => ({
-		crate::print!("\n")
-	});
-	($fmt:expr) => ({
-		crate::print!(concat!($fmt, "\n"))
-	});
-	($fmt:expr, $($args:tt)+) => ({
-		crate::print!(concat!($fmt, "\n"), $($args)+)
-	});
+    () => ({
+        crate::print!("\n")
+    });
+    ($fmt:expr) => ({
+        crate::print!(concat!($fmt, "\n"))
+    });
+    ($fmt:expr, $($args:tt)+) => ({
+        crate::print!(concat!($fmt, "\n"), $($args)+)
+    });
 }
