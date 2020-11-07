@@ -4,6 +4,7 @@
 
 mod init;
 mod panic;
+mod trap;
 mod uart;
 
 #[no_mangle]
