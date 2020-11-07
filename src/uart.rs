@@ -4,7 +4,7 @@ pub struct UartConsole;
 
 unsafe fn uart_console_write(byte: u8) {
     let uart = 0x10000000 as *mut u8;
-    *uart = byte;
+    uart.write_volatile(byte);
 }
 
 impl UartConsole {
