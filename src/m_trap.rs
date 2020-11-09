@@ -30,6 +30,9 @@ extern "C" fn unk_m_trap() {
     let mut mcause: isize;
     let mepc: usize;
     unsafe {
+        // turn off interrupts to save power
+        asm!("csrw mie, zero");
+
         asm!("csrr {0}, mcause", out(reg) mcause);
         asm!("csrr {0}, mepc", out(reg) mepc);
     }
