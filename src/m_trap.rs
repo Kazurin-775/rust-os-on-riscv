@@ -4,9 +4,12 @@ const ECALL_FROM_S: isize = 9;
 
 #[no_mangle]
 extern "C" fn handle_m_trap(arg0: usize) {
-    let mcause: isize;
+    let mut mcause: isize;
     unsafe {
         asm!("csrr {0}, mcause", out(reg) mcause);
+    }
+    if mcause < 0 {
+        mcause = -(mcause & 0x7FF);
     }
 
     match mcause {
@@ -24,11 +27,14 @@ extern "C" fn handle_m_trap(arg0: usize) {
 
 #[no_mangle]
 extern "C" fn unk_m_trap() {
-    let mcause: isize;
+    let mut mcause: isize;
     let mepc: usize;
     unsafe {
         asm!("csrr {0}, mcause", out(reg) mcause);
         asm!("csrr {0}, mepc", out(reg) mepc);
+    }
+    if mcause < 0 {
+        mcause = -(mcause & 0x7FF);
     }
     println!(
         "Unknown machine trap #{} occurred with EPC = {:#X}.",
