@@ -3,8 +3,6 @@
 #![feature(asm, global_asm, naked_functions, panic_info_message)]
 
 mod init;
-mod m_ecall;
-mod m_trap;
 mod panic;
 mod uart;
 
