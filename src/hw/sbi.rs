@@ -6,7 +6,7 @@ pub const RST_SHUTDOWN: usize = 0;
 // pub const RST_REBOOT_COLD: usize = 1;
 // pub const RST_REBOOT_WARM: usize = 2;
 pub const RST_NO_REASON: usize = 0;
-// pub const RST_SYSTEM_FAILURE: usize = 1;
+pub const RST_SYSTEM_FAILURE: usize = 1;
 
 #[inline]
 unsafe fn sbi_call(

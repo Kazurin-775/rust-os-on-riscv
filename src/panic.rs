@@ -13,9 +13,5 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
     } else {
         println!("no information available.");
     }
-    loop {
-        unsafe {
-            asm!("wfi");
-        }
-    }
+    crate::hw::power::emergency_shutdown();
 }
