@@ -6,7 +6,6 @@ SECTIONS {
     .text : {
         *(.text.init) *(.text .text.*)
     }
-    _global_pointer = .;
     .rodata : {
         *(.rodata .rodata.*)
     }

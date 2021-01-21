@@ -2,9 +2,8 @@
     .global _start
 
 _start:
-    # initializate sp and gp
+    # initializate sp
     la      sp, _stack_end
-    la      gp, _global_pointer
 
     # clear .bss segment
     la      t0, _bss_start
