@@ -4,6 +4,14 @@ Special thanks to Stephen Marz's [awesome blog](https://osblog.stephenmarz.com/)
 
 ## Building &amp; Running
 
+Outline:
+
+- Install `qemu-system-riscv64`
+- Install and configure a proper toolchain for Rust on RISC-V
+- Install [RustSBI](https://github.com/luojia65/rustsbi)
+
+Detailed steps:
+
 You should have `qemu-system-riscv64` installed on your system in order to run this OS under an emulator. Use the following command to configure your QEMU build for RISC-V 64:
 
 ```bash
@@ -17,9 +25,9 @@ rustup target add riscv64gc-unknown-none-elf
 rustup override set nightly
 ```
 
-The project defaults to the `riscv64gc-unknown-none-elf` target, as configured in `.cargo/config`. You'll also need the nightly toolchain, since this project uses unstable Rust features.
+This project uses [RustSBI](https://github.com/luojia65/rustsbi) by default. You may need to install one to `/usr/share/qemu/` (if not installed yet), or to manually edit `.cargo/config` to use OpenSBI instead. (You may see a warning message, since some versions of these two SBIs do not support shutdown.)
 
-If you have `qemu-system-riscv64` installed, run the following command to run the OS under QEMU:
+Once everything is installed, run the following command to run the OS under QEMU:
 
 ```bash
 cargo run
