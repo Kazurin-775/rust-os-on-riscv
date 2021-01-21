@@ -10,4 +10,5 @@ mod uart;
 #[no_mangle]
 extern "C" fn kmain() {
     println!("Hello RISC-V from Rust!");
+    hw::power::shutdown();
 }
