@@ -2,6 +2,10 @@
     .global _start
 
 _start:
+    # initialize trap vector
+    la      t0, s_trap
+    csrw    stvec, t0
+
     # initializate sp
     la      sp, _stack_end
 
